@@ -3,6 +3,8 @@
 /public/build
 /public/hot
 /public/storage
+/public/edica
+/public/AdminLTE-3.2.0
 /storage/*.key
 /vendor
 .env
