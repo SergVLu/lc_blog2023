@@ -9,11 +9,11 @@ use App\Models\Category;
 
 class DestroyController extends Controller
 {
-    public function __invoke($id)
+    public function __invoke(Category $category)
     {
 
         // dd($id);
-        $category =Category::find($id);
+        // $category =Category::find($id);
         $category->delete();
         // dd($data);
         return redirect()->route('admin.category.index');

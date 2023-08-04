@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Категории</h1>
+            <h1 class="m-0">Теги</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Админка</a></li>
-              <li class="breadcrumb-item active">Категории</li>
+              <li class="breadcrumb-item active">Теги</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,7 +26,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-3">
-            <a href="{{ route('admin.category.create') }}" class="btn btn-block btn-secondary btn-sm center">Добавить категорию</a>
+            <a href="{{ route('admin.tag.create') }}" class="btn btn-block btn-secondary btn-sm center">Добавить тег</a>
           </div>
         </div>
         <!-- Small boxes (Stat box) -->
@@ -45,26 +45,26 @@
                 </thead>
                 <tbody>
                   @php $num=0 @endphp
-                  @foreach ($categories as $category)
+                  @foreach ($tags as $tag)
                   <tr>
                     <td>{{ $num +=1 }}</td>
-                    <td>{{ $category->title}}</td>
+                    <td>{{ $tag->title}}</td>
                     <td style="width: 20px"> 
-                        <a href="{{ route('admin.category.show', $category->id) }}" style="width: fit-content"><i class="fa fa-eye"></i></a>
+                        <a href="{{ route('admin.tag.show', $tag->id) }}" style="width: fit-content"><i class="fa fa-eye"></i></a>
                     </td>
                     <td style="width: 20px"> 
-                        <a href="{{ route('admin.category.edit', $category->id) }}" class="text-warning" style="width: fit-content"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('admin.tag.edit', $tag->id) }}" class="text-warning" style="width: fit-content"><i class="fa fa-edit"></i></a>
                     </td>
                     <td style="width: 20px"> 
-                        <form action="{{ route('admin.category.destroy', $category->id) }}" method="post">
+                        <form action="{{ route('admin.tag.destroy', $tag->id) }}" method="post">
                           @csrf @method('delete')
                           <button type="submit" style="width: fit-content; border: none; background-color: Transparent;">
                             <i class="fa fa-trash-alt text-danger"></i>
                           </button>
                         </form>
                     </td>
-                    <td>{{ $category->created_at }}</td>
-                    <td>{{ $category->updated_at }}</td>
+                    <td>{{ $tag->created_at }}</td>
+                    <td>{{ $tag->updated_at }}</td>
                   </tr>
                   @endforeach
                   

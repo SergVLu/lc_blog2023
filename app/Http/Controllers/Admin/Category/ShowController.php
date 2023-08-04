@@ -8,9 +8,9 @@ use App\Models\Category;
 
 class ShowController extends Controller
 {
-    public function __invoke($id)
+    public function __invoke(Category $category)
     {
-        $category = Category::find($id);
+        // $category = Category::find($id);
         // dd($category);
         return view('admin.categories.show', compact('category'));
         
