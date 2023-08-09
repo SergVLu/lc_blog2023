@@ -26,7 +26,7 @@
     <section class="content">
 
       <div class="container-fluid w-50 ml-0">
-        <div class="card card-primary">
+        <div class="card card-info">
           <div class="card-header">
             <h3 class="card-title">Новый тег</h3>
           </div>
@@ -47,7 +47,7 @@
 
             <div class="card-footer">
               <button type="submit" class="btn btn-success">Сохранить</button>
-              <a href="{{ route('admin.tag.index') }}" class="btn btn-primary">На главную <i class="fa fa-home"></i></a>
+              <a href="{{ route('admin.tag.index') }}" class="btn btn-info">К тегам <i class="fas fa-tags"></i></a>
             </div>
           </form>
         </div>

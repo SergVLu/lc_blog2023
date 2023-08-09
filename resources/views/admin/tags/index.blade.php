@@ -25,8 +25,8 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-3">
-            <a href="{{ route('admin.tag.create') }}" class="btn btn-block btn-secondary btn-sm center">Добавить тег</a>
+          <div class="col-2">
+            <a href="{{ route('admin.tag.create') }}" class="btn btn-block btn-info btn-sm center ml-4">Добавить тег</a>
           </div>
         </div>
         <!-- Small boxes (Stat box) -->
