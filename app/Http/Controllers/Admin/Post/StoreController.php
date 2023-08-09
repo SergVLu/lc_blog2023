@@ -31,6 +31,8 @@ class StoreController extends Controller
         //     Post::firstOrCreate($data);
         // }
         try {
+            $data = $request->validated();
+
             if(isset($data['tag_ids'])){
                 $tag_ids=$data['tag_ids'];
                 unset($data['tag_ids']);
