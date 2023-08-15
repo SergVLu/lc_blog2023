@@ -7,10 +7,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Создание Поста</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Admin</a></li>
               <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
