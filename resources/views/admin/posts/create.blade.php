@@ -105,6 +105,9 @@
                   </div>
                   <!-- /.form-group -->
               </div>
+              @error('tag_ids')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <!-- /.card-body -->
 

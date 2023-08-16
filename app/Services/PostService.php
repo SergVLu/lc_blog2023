@@ -45,10 +45,15 @@ class PostService
             }
             $post->tags()->sync($tagIds);
             
-            if(array_key_exists('preview_image', $data)){
+            if(isset($data['preview_image'])){
                 Storage::disk('public')->delete('/images', $post->preview_image);
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             }
+            // if(array_key_exists('preview_image', $data)){
+            //     Storage::disk('public')->delete('/images', $post->preview_image);
+            //     $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+            // }
+
             if(array_key_exists('main_image', $data)){
                 Storage::disk('public')->delete('/images', $post->main_image);
                 $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
@@ -63,5 +68,6 @@ class PostService
             
         return $post;
     }
-
+            
+    
 }

@@ -41,7 +41,7 @@
               <div class="text-danger">{{ $message }}</div>
               @enderror
               <div class="form-group ml-5">
-                <input type="text" class="form-control w-25" name="title"  placeholder="Название поста" value="{{ $post->title }}">
+                <input type="text" class="form-control w-25" name="title"  placeholder="Название поста" value="{{ old('title',$post->title) }}">
                 @error('title')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
