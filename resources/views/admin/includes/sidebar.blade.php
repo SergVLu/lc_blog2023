@@ -12,7 +12,16 @@
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
   
-          <li class="nav-item">
+        <li class="nav-item">
+          <a href="{{ route('admin.user.index') }}" class="nav-link">
+            <i class="nav-icon ion ion-person"></i>
+            <p>
+              Пользователи
+            </p>
+          </a>
+        </li>
+     
+        <li class="nav-item">
           <a href="{{ route('admin.post.index') }}" class="nav-link">
             <i class="nav-icon fas fa-copy fa-rotate-270 fa-lg"></i>
             <p>
