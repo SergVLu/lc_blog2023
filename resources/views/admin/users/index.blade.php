@@ -25,8 +25,8 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2">
-            <a href="{{ route('admin.user.create') }}" class="btn btn-block btn-danger btn-sm center ml-4">Добавить пользователя</a>
+          <div class="col-3">
+            <a href="{{ route('admin.user.create') }}" class="btn btn-block btn-danger btn-sm center ml-4">Добавить пользователя<i class="ion ion-person-add  ml-2"></i></a>
           </div>
         </div>
         <!-- Small boxes (Stat box) -->
@@ -39,6 +39,7 @@
                     <th style="width: 10px">#</th>
                     <th>Имя</th>
                     <th>Почта</th>
+                    <th>Роль</th>
                     <th style="width: 100px"  colspan="3">Действие</th>
                     <th style="width: 200px">Создано</th>
                     <th style="width: 200px">Обновлено</th>
@@ -51,6 +52,7 @@
                     <td>{{ $num +=1 }}</td>
                     <td>{{ $user->name}}</td>
                     <td>{{ $user->email}}</td>
+                    <td>{{ $roles[$user->role]}}</td>
                     <td style="width: 20px"> 
                         <a href="{{ route('admin.user.show', $user->id) }}" style="width: fit-content"><i class="fa fa-eye"></i></a>
                     </td>
@@ -58,7 +60,7 @@
                         <a href="{{ route('admin.user.edit', $user->id) }}" class="text-warning" style="width: fit-content"><i class="fa fa-edit"></i></a>
                     </td>
                     <td style="width: 20px"> 
-                        <form action="{{ route('admin.user.destroy', $user->id) }}" method="user">
+                        <form action="{{ route('admin.user.destroy', $user->id) }}" method="post">
                           @csrf @method('delete')
                           <button type="submit" style="width: fit-content; border: none; background-color: Transparent;">
                             <i class="fa fa-trash-alt text-danger"></i>

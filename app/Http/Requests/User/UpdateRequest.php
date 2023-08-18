@@ -25,9 +25,11 @@ class UpdateRequest extends FormRequest
             // 'title' => ['required',
             // 'unique:categories,title,' . $this->id],
             // 'id' => '',
-            'name' => 'required|string|unique:users|min:3|max:63',
-            'email' => 'required|string|unique:users|email',
-            'password' => 'required|string',
+            'name' => 'required|string|min:3|max:63',
+            'email' => ['required', 'email',
+            'unique:users,email,' . $this->id],
+            // 'email' => 'required|string|unique:users|email',
+            'role' => 'required|integer',
         ];
     }
 
@@ -42,9 +44,7 @@ class UpdateRequest extends FormRequest
             'email.required' => 'Это поле необходимо для заполнения',
             'email.string' => 'Это поле должно иметь строковый тип',
             'email.unique' => 'Такая почта уже зарегистрирована, придумайте другую',
-            'password.required' => 'Это поле необходимо для заполнения',
-            'password.string' => 'Это поле должно иметь строковый тип',
-            
+
         ];
     }
 }

@@ -25,10 +25,9 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid w-50">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header d-flex">
-            <h3 class="card-title">Пользователь </h3>
-            <a href="{{ route('admin.user.index')}}" class="pl-4"> <i class="fa fa-home"></i> </a>
+            <h3 class="card-title">Пользователь <i class="fas fa-eye ml-2"></i> </h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
@@ -37,13 +36,28 @@
               <div class="card-body">
                 <div class="form-group">
                   <label >Имя</label>
-                  <input type="text" class="form-control" name="title" placeholder="Enter user" value="{{ $user->title }}">
+                  <input type="text" class="form-control" name="name"  value="{{ $user->name }}">
+                </div>
+                <div class="form-group">
+                  <label >Почта</label>
+                  <input type="text" class="form-control" name="email"  value="{{ $user->email }}">
+                </div>
+                <div class="form-group">
+                  <label >Роль</label>
+                  <select  class="form-control">
+                    @foreach ($roles as $id => $role)
+                      <option  value="{{ $id }}" 
+                        {{ $id ==  $user->role ? ' selected ' : '' }}
+                        >{{ $role }}</option>
+                    @endforeach
+                  </select>
+                  {{-- <input type="text" class="form-control" name="email"  value="{{ $user->role }}"> --}}
                 </div>
               </div>
             </fieldset>
             <!-- /.card-body -->
             <div class="card-footer">
-              <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-warning">Редактировать <i class="fa fa-edit"></i></a>
+              <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-warning">Перейти к редактированию <i class="fa fa-edit ml-2"></i></a>
             </div>
           </form>
         </div>
@@ -58,8 +72,12 @@
                   <td>{{ $user->id}}</td>
                 </tr>
                 <tr>
-                  <td>Title</td>
+                  <td>Имя</td>
                   <td>{{ $user->name}}</td>
+                </tr>
+                <tr>
+                  <td>Почта</td>
+                  <td>{{ $user->email}}</td>
                 </tr>
                 <tr>
                   <td>Created</td>
@@ -74,7 +92,7 @@
               <div class="card-body">
                 <div class="btn-group">
                   <form action="{{ route('admin.user.index') }}" ">
-                    <button type="submit" class="btn btn-primary btn-block"> Назад <i class="fa fa-home"></i></button>
+                    <button type="submit" class="btn btn-primary btn-block"> Назад <i class="fas fa-users ml-2"></i></button>
                   </form>
                   <form action="{{ route('admin.user.edit', $user->id) }}" ">
                     <button type="submit" class="btn btn-warning btn-block ml-2"> Редактировать <i class="fa fa-edit"></i></button>

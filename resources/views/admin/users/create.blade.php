@@ -28,7 +28,7 @@
       <div class="container-fluid w-50 ml-0">
         <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Новый пользователь<i class="ion ion-person-add"></i></h3>
+            <h3 class="card-title">Новый пользователь<i class="ion ion-person-add  ml-2"></i></h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
@@ -37,35 +37,43 @@
             <div class="card-body">
               <div class="form-group">
                 <label >Имя</label>
-                <input type="text" class="form-control" name="name" placeholder="Enter user name">
+                <input type="text" class="form-control" name="name" placeholder="Enter user name" value="{{ old('name') }}">
                 @error('name')
                   <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
-            </div>
-            <div class="card-body">
               <div class="form-group">
                 <label >Почта</label>
-                <input type="text" class="form-control" name="email" placeholder="Enter user email">
+                <input type="text" class="form-control" name="email" placeholder="Enter user email" value="{{ old('email') }}">
                 @error('email')
                   <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
-            </div>
-            <div class="card-body">
               <div class="form-group">
                 <label >Пароль</label>
-                <input type="password" class="form-control" name="password" placeholder="Enter user password">
+                <input type="text" class="form-control" name="password" placeholder="Enter user password" value="{{ old('password') }}">
                 @error('password')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+              <div class="form-group w-50">
+                <label>Выберите роль пользователя</label>
+                <select name="role" class="form-control">
+                  @foreach ($roles as $id => $role)
+                    <option  value="{{ $id }}" 
+                      {{ $id == old("role") ? ' selected ' : '' }}
+                      >{{ $role }}</option>
+                  @endforeach
+                </select>
+                @error('role_id')
                   <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
             </div>
             <!-- /.card-body -->
-
             <div class="card-footer">
-              <button type="submit" class="btn btn-success">Сохранить</button>
-              <a href="{{ route('admin.user.index') }}" class="btn btn-danger">К пользователям<i class="ion ion-person"></i></a>
+              <button type="submit" class="btn btn-success">Сохранить<i class="ion ion-person-add  ml-2"></i></button>
+              <a href="{{ route('admin.user.index') }}" class="btn btn-danger">К пользователям<i class="nav-icon fas fa-users ml-2"></i></a>
             </div>
           </form>
         </div>

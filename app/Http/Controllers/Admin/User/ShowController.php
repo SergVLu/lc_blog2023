@@ -12,7 +12,8 @@ class ShowController extends Controller
     {
         // $user = User::find($id);
         // dd($user);
-        return view('admin.users.show', compact('user'));
+        $roles = User::getRoles();
+        return view('admin.users.show', compact('user','roles'));
         
     }
 }

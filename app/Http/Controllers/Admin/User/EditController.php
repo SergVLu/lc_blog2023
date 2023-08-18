@@ -12,7 +12,8 @@ class EditController extends Controller
     {
         // dd('edit');
         // $user = User::find($id);
-        return view('admin.users.edit', compact('user') );
+        $roles = User::getRoles();
+        return view('admin.users.edit', compact('user','roles') );
         
     }
 }

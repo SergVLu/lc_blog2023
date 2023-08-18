@@ -28,7 +28,7 @@
         <div class="card card-danger">
           <div class="card-header d-flex align-items-center">
             <h3 class="card-title">Пользователь</h3>
-            <a href="{{ route('admin.user.index')}}" class="pl-4"> <i class="fa fa-home"></i> </a>
+            <a href="{{ route('admin.user.index')}}" class="pl-4"> <i class="fa fa-edit"></i> </a>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
@@ -39,10 +39,30 @@
               <div class="form-group">
                 <label >Название</label>
                 <input type="text" class="form-control" name="name" placeholder="Enter user" value="{{ $user->name }}">
-                @error('title')
+                @error('name')
                   <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <input type="hidden" name="id" value="{{ $user->id }}">
+              </div>
+              <div class="form-group">
+                <label >Почта</label>
+                <input type="text" class="form-control" name="email" placeholder="Enter user" value="{{ $user->email }}">
+                @error('email')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+              <div class="form-group w-50">
+                <label>Выберите роль пользователя</label>
+                <select name="role" class="form-control">
+                  @foreach ($roles as $id => $role)
+                    <option  value="{{ $id }}" 
+                      {{ $id == old("role", $user->role) ? ' selected ' : '' }}
+                      >{{ $role }}</option>
+                  @endforeach
+                </select>
+                @error('role_id')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
             <div class="card-footer align-items-center">
