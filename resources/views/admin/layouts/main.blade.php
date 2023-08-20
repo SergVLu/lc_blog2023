@@ -33,16 +33,27 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Exit to Main User</a>
-      </li>
-    </ul>
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">
+    <div class="col-12 d-flex justify-content-between">
+
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="{{ route('main.index') }}" class="nav-link">Exit to Main User</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item d-none d-sm-inline-block">
+          <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <input type="submit" class="btn btn-outline-primary" value="Выход из аккаунта">
+          </form>
+        </li>
+      </ul>
+    </div>
   </nav>
   <!-- /.navbar -->
 
