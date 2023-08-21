@@ -52,7 +52,13 @@
                     <td>{{ $num +=1 }}</td>
                     <td>{{ $user->name}}</td>
                     <td>{{ $user->email}}</td>
-                    <td>{{ $roles[$user->role]}}</td>
+                    <td>
+                      @if (isset($roles[$user->role]))
+                      {{ $roles[$user->role]}}
+                      @else
+                      без роли
+                      @endif
+                    </td>
                     <td style="width: 20px"> 
                         <a href="{{ route('admin.user.show', $user->id) }}" style="width: fit-content"><i class="fa fa-eye"></i></a>
                     </td>

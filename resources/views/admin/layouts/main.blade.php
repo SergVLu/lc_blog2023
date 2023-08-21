@@ -46,6 +46,11 @@
         </li>
       </ul>
       <ul class="navbar-nav">
+        @if(isset(Auth::user()->name))
+          <li class="nav-item d-none d-sm-inline-block">
+            <input type="button" class="btn btn-outline-default" value="вы вошли как: {{ Auth::user()->name }}">
+          </li>
+        @endif
         <li class="nav-item d-none d-sm-inline-block">
           <form action="{{ route('logout') }}" method="post">
             @csrf

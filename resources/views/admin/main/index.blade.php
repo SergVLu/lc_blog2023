@@ -31,13 +31,14 @@
             <div class="small-box bg-secondary">
               <div class="inner">
                 <h3>{{ $postItems }}</h3>
-
                 <p>Посты</p>
               </div>
-              <div class="icon">
-                <i class="fas fa-copy fa-rotate-270"></i>
-              </div>
-              <a href="{{ route('admin.post.index') }}" class="small-box-footer">Развернуть <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('admin.post.index') }}">
+                <div class="icon">
+                  <i class="fas fa-copy fa-rotate-270"></i>
+                </div>
+              </a>
+                <a href="{{ route('admin.post.index') }}" class="small-box-footer">Развернуть <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -49,9 +50,11 @@
 
                 <p>Категории</p>
               </div>
+              <a href="{{ route('admin.category.index') }}">
               <div class="icon">
-                <i class="fas fa-th-list"></i>
+                <i class="fas fa-th-list fa-rotate-180"></i>
               </div>
+              </a>
               <a href="{{ route('admin.category.index') }}" class="small-box-footer">Развернуть <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
@@ -79,9 +82,11 @@
 
                 <p>Пользователи</p>
               </div>
+              <a href="{{ route('admin.user.index') }}" >
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
+            </a>
               <a href="{{ route('admin.user.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
