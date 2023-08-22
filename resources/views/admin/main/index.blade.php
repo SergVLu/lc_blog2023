@@ -28,9 +28,26 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ $data['userCount'] }}</h3>
+
+                <p>Пользователи</p>
+              </div>
+              <a href="{{ route('admin.user.index') }}" >
+              <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+            </a>
+              <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>{{ $postItems }}</h3>
+                <h3>{{ $data['postCount'] }}</h3>
                 <p>Посты</p>
               </div>
               <a href="{{ route('admin.post.index') }}">
@@ -38,7 +55,7 @@
                   <i class="fas fa-copy fa-rotate-270"></i>
                 </div>
               </a>
-                <a href="{{ route('admin.post.index') }}" class="small-box-footer">Развернуть <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.post.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -46,7 +63,7 @@
             <!-- small box -->
             <div class="small-box bg-default">
               <div class="inner">
-                <h3>{{ $categoryItems }}<sub style="font-size: 20px">шт.</sub></h3>
+                <h3>{{ $data['categoryCount'] }}<sub style="font-size: 20px">шт.</sub></h3>
 
                 <p>Категории</p>
               </div>
@@ -55,7 +72,7 @@
                 <i class="fas fa-th-list fa-rotate-180"></i>
               </div>
               </a>
-              <a href="{{ route('admin.category.index') }}" class="small-box-footer">Развернуть <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('admin.category.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -63,31 +80,16 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $tagItems }}</h3>
+                <h3>{{ $data['tagCount'] }}</h3>
 
                 <p>Теги</p>
               </div>
+              <a href="{{ route('admin.tag.index') }}">
               <div class="icon">
                 <i class="fas fa-tags"></i>
               </div>
-              <a href="{{ route('admin.tag.index') }}" class="small-box-footer">Развернуть <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>{{ $users }}</h3>
-
-                <p>Пользователи</p>
-              </div>
-              <a href="{{ route('admin.user.index') }}" >
-              <div class="icon">
-                <i class="ion ion-person"></i>
-              </div>
-            </a>
-              <a href="{{ route('admin.user.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </a>
+              <a href="{{ route('admin.tag.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

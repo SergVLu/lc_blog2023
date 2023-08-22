@@ -26,9 +26,13 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">AdminPanel</a>
-                        </li>
+                        @if (isset($role))
+                            @if ($role === 0)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin">AdminPanel</a>
+                                </li>
+                            @endif
+                        @endif
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
                             <div class="dropdown-menu" aria-labelledby="blogDropdown">

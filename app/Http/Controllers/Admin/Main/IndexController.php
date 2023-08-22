@@ -13,13 +13,14 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $postItems = Post::all()->count();
-        $tagItems = Tag::pluck('id')->count();
-        $categoryItems = Category::pluck('id')->count();
-        $users = User::pluck('id')->count();
+        $data =[];
+        $data['postCount'] = Post::all()->count();
+        $data['tagCount'] = Tag::pluck('id')->count();
+        $data['categoryCount'] = Category::pluck('id')->count();
+        $data['userCount'] = User::pluck('id')->count();
 
 
-        return view('admin.main.index', compact('tagItems','categoryItems','postItems','users'));
+        return view('admin.main.index', compact('data'));
         
     }
 }

@@ -14,7 +14,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Admin</a></li>
               <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">Пользователи</a></li>
-              <li class="breadcrumb-item active">Пользователь</li>
+              <li class="breadcrumb-item active">{{ $user->name }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,7 +27,7 @@
       <div class="container-fluid w-50">
         <div class="card card-danger">
           <div class="card-header d-flex">
-            <h3 class="card-title">Пользователь <i class="fas fa-eye ml-2"></i> </h3>
+            <h3 class="card-title">Пользователь {{ $user->name }}<i class="fas fa-eye ml-2"></i> </h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->

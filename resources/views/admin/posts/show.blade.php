@@ -17,7 +17,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Admin</a></li>
               <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
-              <li class="breadcrumb-item active">Просмотр Поста</li>
+              <li class="breadcrumb-item active"> {{ $post->title }} </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
       <div class="container-fluid">
         <div class="card card-primary">
           <div class="card-header d-flex align-items-center">
-            <h3 class="card-title">Просмотр Поста<i class="fa fa-eye pl-3"></i></h3>
+            <h3 class="card-title">Пост: {{ $post->title }}<i class="fa fa-eye pl-3"></i></h3>
             {{-- <a href="{{ route('admin.post.index')}}" class="pl-4"> <i class="fa fa-eye"></i> </a> --}}
           </div>
           <!-- /.card-header -->
