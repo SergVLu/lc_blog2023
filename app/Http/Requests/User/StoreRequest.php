@@ -22,7 +22,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3|max:63',
+            'name' => 'required|string|min:3|max:13',
             'id' => '',
             'email' => 'required|string|unique:users|email',
             // 'password' => 'required|string',
@@ -36,7 +36,7 @@ class StoreRequest extends FormRequest
             'name.string' => 'Это поле должно иметь строковый тип',
             'name.unique' => 'Такое название уже существует, придумайте другое',
             'name.min' => 'Имя должно быть не менее 3 символов, придумайте другое',
-            'name.max' => 'Имя должно быть не ,более 63 символов, придумайте другое',
+            'name.max' => 'Имя должно быть не ,более 13 символов, придумайте другое',
             'email.required' => 'Это поле необходимо для заполнения',
             'email.string' => 'Это поле должно иметь строковый тип',
             'email.unique' => 'Такая почта уже зарегистрирована, придумайте другую',

@@ -33,6 +33,11 @@
                                 </li>
                             @endif
                         @endif
+                        @if (isset(Auth::user()->name))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/personal">PresonalPanel</a>
+                            </li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
                             <div class="dropdown-menu" aria-labelledby="blogDropdown">
