@@ -21,13 +21,46 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    {{ '55555like' }}
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-
+          <div class="col-10">
+            <div class="card-body">
+              <table class="table table-bordered pl-0">
+                <thead>
+                  <tr style="text-align: center">
+                    <th style="width: 10px">id</th>
+                    <th>Название поста</th>
+                    <th style="width: 100px"  colspan="2">Действие над лайком</th>
+                    <th>Категория</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($posts as $post)
+                  <tr>
+                    <td>{{ $post->id }}</td>
+                    <td style="overflow:hidden;max-width: 150px;" nowrap>{{ $post->title}}</td>
+                    <td style="width: 20px"> 
+                        <a href="{{ route('admin.post.show', $post->id) }}" style="width: fit-content"><i class="fa fa-eye"></i></a>
+                    </td>
+                    <td style="width: 20px"> 
+                        <form action="{{ route('personal.like.destroy', $post->id) }}" method="post">
+                          @csrf @method('delete')
+                          <button type="submit" style="width: fit-content; border: none; background-color: Transparent;">
+                            <i class="fa fa-trash-alt text-danger"></i>
+                          </button>
+                        </form>
+                    </td>
+                    <td >{{ $post->category->title }}</td>
+                  </tr>
+                  @endforeach
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <!-- /.row -->
 

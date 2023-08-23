@@ -31,6 +31,7 @@ Route::group(['namespace'=>'Personal', 'prefix'=> 'personal', 'middleware'=>['au
     });
     Route::group(['namespace'=>'Like', 'prefix'=> 'like'], function(){
         Route::get('/', 'IndexController')->name('personal.like.index');
+        Route::delete('/{post}','DestroyController')->name('personal.like.destroy');
     });
     Route::group(['namespace'=>'Comment', 'prefix'=> 'comment'], function(){
         Route::get('/', 'IndexController')->name('personal.comment.index');
