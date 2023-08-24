@@ -13,8 +13,10 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        // return '777Comment';
-        return view('personal.commented.index');
+        $comments = auth()->user()->comments;
+        $posts = Post::all();
+        // dd($posts);
+        return view('personal.commented.index', compact('comments','posts'));
         
     }
 }

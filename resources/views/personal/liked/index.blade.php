@@ -33,7 +33,7 @@
                   <tr style="text-align: center">
                     <th style="width: 10px">id</th>
                     <th>Название поста</th>
-                    <th style="width: 100px"  colspan="2">Действие над лайком</th>
+                    <th style="width: 100px"  colspan="2">Лайк</th>
                     <th>Категория</th>
                   </tr>
                 </thead>
