@@ -33,12 +33,21 @@
                 <h3>{{ Auth::user()->name }}</h3>
                 <p>Пользователь</p>
               </div>
-              <a href="{{ route('admin.user.show',Auth::user()->id) }}" >
+              @if(auth()->user()->role == 0)
+                <a href="{{ route('admin.user.show',Auth::user()->id) }}" >
+                  <div class="icon">
+                    <i class="far fa-user  fa-rotate-90"></i>
+                  </div>
+                </a>
+                <a href="{{ route('admin.user.show',Auth::user()->id) }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            @else
+            <a href="#" >
               <div class="icon">
                 <i class="far fa-user  fa-rotate-90"></i>
               </div>
             </a>
-              <a href="{{ route('admin.user.show',Auth::user()->id) }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Вы не админ</a>
+              @endif
             </div>
           </div>
           <!-- ./col -->

@@ -12,6 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">Blog</a></li>
               <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Админка</a></li>
               <li class="breadcrumb-item active">Пользователи</li>
             </ol>
@@ -31,7 +32,7 @@
         </div>
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-10">
+          <div class="col-20">
             <div class="card-body">
               <table class="table table-bordered pl-0">
                 <thead>

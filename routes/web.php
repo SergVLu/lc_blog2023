@@ -21,6 +21,9 @@ Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::group(['namespace'=>'Post', 'prefix' =>'post'], function(){
+    Route::get('/', 'IndexController')->name('post.index');
+});
 Route::group(['namespace'=>'Main'], function(){
     Route::get('/', 'IndexController')->name('main.index');
 });

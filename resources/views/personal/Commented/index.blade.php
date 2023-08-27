@@ -21,7 +21,6 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-      echo '7777777Comment';
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">

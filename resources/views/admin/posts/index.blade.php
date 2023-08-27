@@ -12,6 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">Blog</a></li>
               <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Админка</a></li>
               <li class="breadcrumb-item active">Посты</li>
             </ol>
@@ -31,12 +32,12 @@
         </div>
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-10">
+          <div class="col-12">
             <div class="card-body">
               <table class="table table-bordered pl-0">
                 <thead>
                   <tr style="text-align: center">
-                    <th style="width: 10px">#</th>
+                    <th style="width: 10px">#id</th>
                     <th>Название</th>
                     <th style="width: 100px"  colspan="3">Действие</th>
                     <th>Текст</th>
@@ -46,10 +47,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @php $num=0 @endphp
                   @foreach ($posts as $post)
                   <tr>
-                    <td>{{ $num +=1 }}</td>
+                    <td style="text-align: center">{{ $post->id }}</td>
                     <td style="overflow:hidden;max-width: 150px;" nowrap>{{ $post->title}}</td>
                     <td style="width: 20px"> 
                         <a href="{{ route('admin.post.show', $post->id) }}" style="width: fit-content"><i class="fa fa-eye"></i></a>
