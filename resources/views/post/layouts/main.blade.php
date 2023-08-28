@@ -24,10 +24,10 @@
                 <div class="collapse navbar-collapse" id="edicaMainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Главная</a>
+                            <a class="nav-link" href="/">Blog-main</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/post">Blog-posty</a>
+                            <a class="nav-link" href="{{ route('post.index') }}">Blog-posty</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>

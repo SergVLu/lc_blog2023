@@ -1,20 +1,20 @@
-@extends('main.layouts.main')
+@extends('post.layouts.main')
 
 @section('content')
 <main class="blog">
     <div class="container">
-        <h1 class="edica-page-title" data-aos="fade-up">Главная</h1>
+        <h1 class="edica-page-title" data-aos="fade-up">Блог-пост</h1>
         <section class="featured-posts-section">
             <div class="row">
                 @foreach ($posts as $post)
                     <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
                         <div class="blog-post-thumbnail-wrapper">
-                            <a href="{{ asset('/admin/posts/'.$post->id )}}">
+                            <a href="{{ route('post.show', $post->id )}}">
                                 <img src="{{ asset('storage/'.$post->main_image )}}" alt="blog post">
                             </a>
                         </div>
                         <p class="blog-post-category">{{ $post->category->title }}</p>
-                        <a href="{{ asset('/admin/posts/'.$post->id )}}" class="blog-post-permalink">
+                        <a href="{{ route('post.show', $post->id )}}" class="blog-post-permalink">
                             <h6 class="blog-post-title">{{ $post->title }}</h6>
                         </a>
                     </div>

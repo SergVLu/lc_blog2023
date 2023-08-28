@@ -23,6 +23,7 @@ Auth::routes(['verify' => true]);
 
 Route::group(['namespace'=>'Post', 'prefix' =>'post'], function(){
     Route::get('/', 'IndexController')->name('post.index');
+    Route::get('/{post}', 'ShowController')->name('post.show');
 });
 Route::group(['namespace'=>'Main'], function(){
     Route::get('/', 'IndexController')->name('main.index');
