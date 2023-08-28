@@ -23,27 +23,35 @@
                 </button>
                 <div class="collapse navbar-collapse" id="edicaMainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Главная</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/post">Blog-posty</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
-                        </li>
-                        @if (isset(Auth::user()->name))
+                        @if (url()->current() == '/')
                             <li class="nav-item">
-                                <a class="nav-link" href="/personal">PresonalPanel</a>
+                                <a class="nav-link" href="/">Главная</a>
                             </li>
                         @endif
-                        @if (isset($role))
-                            @if ($role === 0)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/post">Смотреть Посты</a>
+                        </li>
+                        @guest
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                            </li>
+                        @endguest
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/personal">Личный кабинет</a>
+                            </li>
+                            @if(auth()->user()->role == 0)
                                 <li class="nav-item">
                                     <a class="nav-link" href="/admin">AdminPanel</a>
                                 </li>
                             @endif
-                        @endif
+                            <li class="nav-item d-none d-sm-inline-block">
+                                <form action="{{ route('logout') }}" method="post">
+                                  @csrf
+                                  <input type="submit" class="btn nav-link" value="Выход">
+                                </form>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
             </nav>

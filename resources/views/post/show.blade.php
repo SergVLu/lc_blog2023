@@ -31,13 +31,6 @@
             <div class="row">
                 <div class="col-lg-9 mx-auto">
                     <p data-aos="fade-up"><a href="#">Знать хорошо</a> , а думать о том что знаешь - зло. Надо научиться быть нейтральным к тому что знаешь. Когда чувствуешь сразу и знаешь. <br/>&nbsp;&nbsp;Начинаешь исследовать разумом и уже не чувствуешь, знание дальше не приходит... Ум занят вычислениями.</<br>&nbsp;&nbsp;Перестало приходить - хорошо. Идёт - тоже хорошо. Надо только чувствовать. Опять пришли к ОМ, даже к ОВД сначала. Цувствовать и быть нейтральным к тому чтопочувствовал. Разум хорошо раскидывает полочкам только во сне или медитации. И то не факт.</p>
-                    <h2 class="mb-4" data-aos="fade-up">Blog single page</h2>
-                    <ul data-aos="fade-up">
-                        <li>What manner of thing was upon me I did not know, but that it was large and heavy and many-legged I could feel.</li>
-                        <li>My hands were at its throat before the fangs had a chance to bury themselves in my neck, and slowly</li>
-                        <li>I forced the hairy face from me and closed my fingers, vise-like, upon its windpipe.</li>
-                    </ul>
-
                     <blockquote data-aos="fade-up">
                         <p>&nbsp;&nbsp;Эмоции провоцирует разум, это связка. Один из механизмов расходования сексуальной энергии.</p>
                         <footer class="blockquote-footer">Marubasy-Nagval-Dao</footer>
@@ -52,48 +45,67 @@
                 <section class="related-posts">
                     <h2 class="section-title mb-4" data-aos="fade-up">Похожие посты</h2>
                     <div class="row">
-                        @foreach ($relposts as $post)
+                        @foreach ($relposts as $relpost)
                         <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                            <a href="{{ route('post.show', $post->id )}}  " style="text-decoration: none; ">
-                            <img src="{{ asset('storage/'.$post->preview_image )}}" alt="related post" class="post-thumbnail">
-                            <p class="post-category">{{ $post->category->title }}</p>
-                            <h5 class="post-title">{{ $post->title }}</h5>
+                            <a href="{{ route('post.show', $relpost->id )}}  " style="text-decoration: none; ">
+                            <img src="{{ asset('storage/'.$relpost->preview_image )}}" alt="related post" class="post-thumbnail">
+                            <p class="post-category">{{ $relpost->category->title }}</p>
+                            <h5 class="post-title">{{ $relpost->title }}</h5>
                             </a>
                         </div>
                         @endforeach
                     </div>
                 </section>
                 @endif
-                <section class="comment-section">
-                    <h2 class="section-title mb-5" data-aos="fade-up">Leave a Reply</h2>
-                    <form action="/" method="post">
-                        <div class="row">
-                            <div class="form-group col-12" data-aos="fade-up">
-                            <label for="comment" class="sr-only">Comment</label>
-                            <textarea name="comment" id="comment" class="form-control" placeholder="Comment" rows="10">Comment</textarea>
+                <div class="row">
+                    <div class="col-lg-9 mx-auto">
+                        <h2 class="mb-4" data-aos="fade-up">Последние комментарии</h2>
+                        <ul data-aos="fade-up">
+                            @foreach ( $post->comments->take(-2)->sortDesc() as $message )
+                            {{-- //                     ->get()
+                            //                     ->take(2)  --}}
+                                <li>{{ $message->message }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <section class="comment-list mb-5">
+                    <div class="mx-auto">
+                        <h3>Комментарии({{ $post->comments->count() }})</h3>
+                        @foreach ($post->comments as $comment )
+                            <div class="comment-text mb-2">
+                                <span class="username">
+                                    <div>
+                                        Автор: {{ $comment->user->name }}
+                                    </div>
+                                </span>
+                                {{-- <span class="text-muted float-right">{{ $comment->date_as_carbon->diffForHumans() }}</span><br> --}}
+                                <span class="text-muted float-right">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
+                                {{ $comment->message }}<hr>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-4" data-aos="fade-right">
-                                <label for="name" class="sr-only">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Name*">
-                            </div>
-                            <div class="form-group col-md-4" data-aos="fade-up">
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email*" required>
-                            </div>
-                            <div class="form-group col-md-4" data-aos="fade-left">
-                                <label for="website" class="sr-only">Website</label>
-                                <input type="url" name="website" id="website" class="form-control" placeholder="Website*">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12" data-aos="fade-up">
-                                <input type="submit" value="Send Message" class="btn btn-warning">
-                            </div>
-                        </div>
-                    </form>
+                        @endforeach
+                    </div>
                 </section>
+                @auth
+                    <section class="comment-section">
+                        <h2 class="section-title mb-5" data-aos="fade-up">Оставить комментарий</h2>
+                        <form action="{{ route('post.comment.store', $post->id) }}" method="post">
+                            @csrf
+                            <div class="row">
+                                <div class="form-group col-12" data-aos="fade-up">
+                                <label for="message" class="sr-only">Comment</label>
+                                <textarea name="message" id="message" class="form-control" placeholder="Комментарий" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" data-aos="fade-up">
+                                    <input type="submit" value="Отослать комментарий" class="btn btn-warning btn-sx">
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                @endauth
+
             </div>
         </div>
     </div>

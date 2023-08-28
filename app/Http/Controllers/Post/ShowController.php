@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Carbon\Carbon;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,8 +19,6 @@ class ShowController extends Controller
                             ->where('id','!=', $post->id)
                             ->get()
                             ->take(3);
-
-// dd($countComments);
         return view('post.show', compact('post','date','relposts'));
         
     }

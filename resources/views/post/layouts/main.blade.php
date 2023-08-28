@@ -24,26 +24,37 @@
                 <div class="collapse navbar-collapse" id="edicaMainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Blog-main</a>
+                            <a class="nav-link" href="/">Главная</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('post.index') }}">Blog-posty</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
-                        </li>
-                        @if (isset(Auth::user()->name))
+                        @if (url()->current() == '/post')
                             <li class="nav-item">
-                                <a class="nav-link" href="/personal">PresonalPanel</a>
+                                <a class="nav-link" href="{{ route('post.index') }}">Смотреть Посты</a>
                             </li>
                         @endif
-                        @if (isset($role))
-                            @if ($role === 0)
+                        <li class="nav-item">
+                        </li>
+                        @guest
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                            </li>
+                        @endguest
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/personal">Личный кабинет</a>
+                            </li>
+                            @if (auth()->user()->role == 0)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/admin">AdminPanel</a>
+                                    <a class="nav-link" href="/admin">Админка</a>
                                 </li>
                             @endif
-                        @endif
+                            <li class="nav-item d-none d-sm-inline-block">
+                                <form action="{{ route('logout') }}" method="post">
+                                  @csrf
+                                  <input type="submit" class="btn nav-link" value="Выход">
+                                </form>
+                            </li>
+                        @endauth
+                        
                     </ul>
                 </div>
             </nav>
@@ -52,7 +63,7 @@
 
     @yield('content')
 
-    <footer class="edica-footer" data-aos="fade-up">
+    <footer class="edica-footer mt-1" data-aos="fade-up">
         <div class="container">
             <div class="footer-bottom-content" style="margin-top: -160px; ">
                 <nav class="nav footer-bottom-nav">
