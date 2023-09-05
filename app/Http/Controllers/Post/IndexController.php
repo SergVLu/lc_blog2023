@@ -11,7 +11,8 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $posts = Post::paginate(6);
+        // $posts = Post::paginate(6);                  //вместо этого
+        $posts = Post::with('category')->paginate(6);   //вот это сразу с постом подгрузит и категорию
         // dd($posts);
         $randomPosts = Post::get()->random(4);
         $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(5);

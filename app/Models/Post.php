@@ -17,6 +17,7 @@ class Post extends Model
     protected $guarded = false;
 
     protected $withCount =['LikedUsers','Comments'];
+    protected $with =['category'];//это сразу подгрузит в модель и категории 
 
     public function category()
     {
