@@ -12,8 +12,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">LC-Blog2023</a></li>
-              <li class="breadcrumb-item active">PersonalPanel</li>
+              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">Blog</a></li>
+              <li class="breadcrumb-item active">Личный кабинет</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -41,13 +41,13 @@
                 </a>
                 <a href="{{ route('admin.user.show',Auth::user()->id) }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
             @else
-            <a href="#" >
-              <div class="icon">
-                <i class="far fa-user  fa-rotate-90"></i>
-              </div>
-            </a>
-            <a href="#" class="small-box-footer">Вы не админ</a>
-              @endif
+              <a href="#" >
+                <div class="icon">
+                  <i class="far fa-user  fa-rotate-90"></i>
+                </div>
+              </a>
+              <a href="{{ route('personal.user.show',Auth::user()->id) }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            @endif
             </div>
           </div>
           <!-- ./col -->

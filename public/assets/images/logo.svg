@@ -1,16 +1,12 @@
-<svg width="179" height="36" xmlns="http://www.w3.org/2000/svg">
- <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+<svg width="144" height="31" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG Editor - http://github.com/mzalive/SVG Editor/ -->
 
- <title>EDICA@1x</title>
- <desc>Created with Sketch.</desc>
  <g>
   <title>background</title>
-  <rect fill="none" id="canvas_background" height="38" width="181" y="-1" x="-1"/>
+  <rect x="-1" y="-1" width="146" height="33" id="canvas_background" fill="#fff"/>
  </g>
  <g>
   <title>Layer 1</title>
-  <text font-weight="bold" stroke="#020f0f" transform="matrix(2.500463324536497,0,0,2.379040479660034,-131.26911002046552,-108.73696095216474) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" id="svg_2" y="58" x="53" stroke-opacity="null" stroke-width="0" fill="#549975">SEREJICA</text>
-  <path id="svg_3" d="m-330,33.453125" opacity="0.5" stroke-width="0" fill="none"/>
-  <path id="svg_4" d="m152,114.453125" opacity="0.5" stroke-width="0" fill="none"/>
+  <text style="cursor: move;" fill="#007575" stroke-width="0" x="184.5" y="175.68188" id="svg_1" font-size="14" font-family="Oswald, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(2.01841 0 0 2.12132 -369.894 -346.147)" stroke="#020f0f" font-weight="bold" font-style="normal">SERJICA</text>
  </g>
 </svg>

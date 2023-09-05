@@ -12,9 +12,9 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">LC-Blog2023</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('personal.main.index') }}">PersonalPanel</a></li>
-              <li class="breadcrumb-item active">Liked</li>
+              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">Blog</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('personal.main.index') }}">Личный кабинет</a></li>
+              <li class="breadcrumb-item active">Понравилось</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,7 +43,7 @@
                     <td>{{ $post->id }}</td>
                     <td style="overflow:hidden;max-width: 150px;" nowrap>{{ $post->title}}</td>
                     <td style="width: 20px"> 
-                        <a href="{{ route('admin.post.show', $post->id) }}" style="width: fit-content"><i class="fa fa-eye"></i></a>
+                        <a href="{{ route('post.show', $post->id )}}" style="width: fit-content"><i class="fa fa-eye"></i></a>
                     </td>
                     <td style="width: 20px"> 
                         <form action="{{ route('personal.like.destroy', $post->id) }}" method="post">

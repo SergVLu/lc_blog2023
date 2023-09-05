@@ -1,4 +1,4 @@
-@extends('post.layouts.main')
+@extends('layouts.main')
 
 @section('content')
 
@@ -39,6 +39,33 @@
                 </div>
             </div>
         </section>
+        <section>
+            @auth
+                <form action="{{ route('post.like.store', $post->id) }}" method="post" >
+                    @csrf
+                    <button type="submit" class="btn">
+                        @if (auth()->user()->likedPosts->contains($post->id))
+                            <i class="nav-icon fas fa-heart" style="color: #f8530d;"></i>
+                        @else
+                            <i class="nav-icon far fa-heart"></i>
+                        @endif    
+                        {{-- @endif --}}
+                    </button>
+                    ({{ $post->liked_users_count }})
+                    <button type="submit" class="btn">
+                        @auth
+                            <i class="nav-icon fa{{ auth()->user()->likedPosts->contains($post->id) ? 's' : 'r' }} fa-heart" style="color: {{ auth()->user()->likedPosts->contains($post->id) ? ' #f8530d;' : '' }}"></i>
+                        @endauth
+                        
+                    </button>
+                </form>
+            @endauth
+            <div class="col-md-2 pr-20" style="float: right">
+                @guest
+                    <i class="nav-icon fa{{ $post->liked_users_count == 0 ? 'r' : 's' }} fa-heart pr-2" style="color: {{ $post->liked_users_count == 0 ? '' : ' #f8530d;' }}">({{ $post->liked_users_count }})</i>
+                @endguest
+            </div>
+        </section>
         <div class="row">
             <div class="col-lg-9 mx-auto">
                 @if($relposts->count() !=0 )
@@ -57,35 +84,40 @@
                     </div>
                 </section>
                 @endif
-                <div class="row">
-                    <div class="col-lg-9 mx-auto">
-                        <h2 class="mb-4" data-aos="fade-up">Последние комментарии</h2>
-                        <ul data-aos="fade-up">
-                            @foreach ( $post->comments->take(-2)->sortDesc() as $message )
-                            {{-- //                     ->get()
-                            //                     ->take(2)  --}}
-                                <li>{{ $message->message }}</li>
+                @if ($post->comments->count()!=0)
+                    <div class="row">
+                        <div class="col-lg-9 mx-auto">
+                            <h2 class="mb-4" data-aos="fade-up">Последние комментарии</h2>
+                            <ul data-aos="fade-up">
+                                @foreach ( $post->comments->take(-2)->sortDesc() as $message )
+                                {{-- //                     ->get()
+                                //                     ->take(2)  --}}
+                                    <li>{{ $message->message }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+
+                @if ($post->comments->count()!=0)
+                    <section class="comment-list mb-5">
+                        <div class="mx-auto">
+                            <h3>Комментарии({{ $post->comments->count() }})</h3>
+                            @foreach ($post->comments as $comment )
+                                <div class="comment-text mb-2">
+                                    <span class="username">
+                                        <div>
+                                            Автор: {{ $comment->user->name }}
+                                        </div>
+                                    </span>
+                                    {{-- <span class="text-muted float-right">{{ $comment->date_as_carbon->diffForHumans() }}</span><br> --}}
+                                    <span class="text-muted float-right">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
+                                    {{ $comment->message }}<hr>
+                                </div>
                             @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <section class="comment-list mb-5">
-                    <div class="mx-auto">
-                        <h3>Комментарии({{ $post->comments->count() }})</h3>
-                        @foreach ($post->comments as $comment )
-                            <div class="comment-text mb-2">
-                                <span class="username">
-                                    <div>
-                                        Автор: {{ $comment->user->name }}
-                                    </div>
-                                </span>
-                                {{-- <span class="text-muted float-right">{{ $comment->date_as_carbon->diffForHumans() }}</span><br> --}}
-                                <span class="text-muted float-right">{{ $comment->dateAsCarbon->diffForHumans() }}</span>
-                                {{ $comment->message }}<hr>
-                            </div>
-                        @endforeach
-                    </div>
-                </section>
+                        </div>
+                    </section>
+                @endif
                 @auth
                     <section class="comment-section">
                         <h2 class="section-title mb-5" data-aos="fade-up">Оставить комментарий</h2>

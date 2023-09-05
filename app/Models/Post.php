@@ -16,6 +16,8 @@ class Post extends Model
     protected $table = 'posts';
     protected $guarded = false;
 
+    protected $withCount =['LikedUsers','Comments'];
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -32,5 +34,6 @@ class Post extends Model
     {
         return $this->belongsToMany(User::class,'post_user_likes','post_id','user_id');
     }
+    
 
 }

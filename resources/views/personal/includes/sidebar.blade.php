@@ -11,15 +11,27 @@
     <ul class="pt-3 nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-  
-        <li class="nav-item">
-          <a href="{{ route('admin.user.show',Auth::user()->id) }}" class="nav-link">
-            <i class="nav-icon far fa-user"></i>
-            <p>
-              Пользователь
-            </p>
-          </a>
-        </li>
+        @auth
+          @if(Auth::user()->role == 0)
+            <li class="nav-item">
+              <a href="{{ route('admin.user.show',Auth::user()->id) }}" class="nav-link">
+                <i class="nav-icon far fa-user"></i>
+                <p>
+                  Пользователь
+                </p>
+              </a>
+            </li>
+            @else
+            <li class="nav-item">
+              <a href="{{ route('personal.user.show',Auth::user()->id) }}" class="nav-link">
+                <i class="nav-icon far fa-user"></i>
+                <p>
+                  Пользователь
+                </p>
+              </a>
+            </li>
+          @endif
+        @endauth
      
         <li class="nav-item">
           <a href="{{ route('personal.like.index') }}" class="nav-link">

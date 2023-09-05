@@ -12,8 +12,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">LC-Blog2023</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('personal.main.index') }}">PersonalPanel</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('main.index') }}">Blog</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('personal.main.index') }}">Личный кабинет</a></li>
               <li class="breadcrumb-item active">Commented</li>
             </ol>
           </div><!-- /.col -->
