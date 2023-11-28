@@ -14,7 +14,7 @@ class IndexController extends Controller
     {
         // $posts = $category->posts;
         $posts = $category->posts()->paginate(4);
-        // dd($posts);
+        // dd($category);
 
         return view('category.post.index' ,compact('posts','category'));
         

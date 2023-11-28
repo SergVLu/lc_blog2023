@@ -3,7 +3,8 @@
 @section('content')
 <main class="blog">
   <div class="container">
-      <h1 class="edica-page-title" data-aos="fade-up">Посты</h1>
+      <h3 class="edica-page-title" data-aos="fade-up">Категория: {{ $category->title }}</h3>
+      <p  data-aos="fade-up">Посты в которых есть эта категория: </p>
       <section class="featured-posts-section">
           <div class="row">
               @foreach ($posts as $post)
@@ -24,7 +25,6 @@
                                       @else
                                           <i class="nav-icon far fa-heart"></i>
                                       @endif    
-                                      {{-- @endif --}}
                                   </button>
                                   ({{ $post->liked_users_count }})
                                   <button type="submit" class="btn">

@@ -26,9 +26,15 @@
                           @endforeach
                         </tbody>
                       </table>
-                </div>
-            </div>
-        </div>
+                      
+                    </div>
+                  </div>
+                  @if($categories->total()>6) 
+                  <div  style="margin-top:40px; margin-left:25%;" >      
+                    {{ $categories->links() }}                                      
+                  </div>
+                  @endif
+          </div>
     </div>
 </div>
 

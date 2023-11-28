@@ -26,17 +26,17 @@
                         {{-- {{ url()->current() }} --}}
                         @if (url()->current() != 'http://127.0.0.1:8000')
                             <li class="nav-item">
-                                <a class="nav-link" href="/">Главная</a>
+                                <a class="nav-link" href="{{ route('main.index') }}">Главная</a>
                             </li>
                         @endif
-                        @if (url()->current() != 'http://127.0.0.1:8000/post')
+                        @if (url()->current() != 'http://127.0.0.1:8000/posts')
                             <li class="nav-item">
-                                <a class="nav-link" href="/post">Посты</a>
+                                <a class="nav-link" href="{{ route('post.index') }}">Посты</a>
                             </li>
                         @endif
                         @if (url()->current() != 'http://127.0.0.1:8000/categories')
                             <li class="nav-item">
-                                <a class="nav-link" href="/categories">Категории</a>
+                                <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
                             </li>
                         @endif
                         @guest

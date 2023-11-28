@@ -3,7 +3,7 @@
 @section('content')
 <main class="blog">
     <div class="container">
-        <h1 class="edica-page-title" data-aos="fade-up">Главная</h1>
+        <h1 class="edica-page-title" data-aos="fade-up">здесь будет главная страница, а сейчас этот блейд не задействован Главная</h1>
         <section class="featured-posts-section">
             <div class="row">
                 @foreach ($posts as $post)
@@ -24,7 +24,6 @@
                 <div  class="mx-auto" style="margin-top: -100px;" >
                     {{ $posts->links() }}
                 </div>
-
             </div>
         </section>
         <div class="row">
@@ -70,6 +69,5 @@
             </div>
         </div>
     </div>
-
 </main>
 @endsection

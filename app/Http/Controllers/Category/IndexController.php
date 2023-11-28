@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $categories = Category::paginate(16);
+        $categories = Category::paginate(6);
 
         return view('category.index' ,compact('categories'));
         

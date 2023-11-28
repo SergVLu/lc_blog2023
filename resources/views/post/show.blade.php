@@ -3,17 +3,16 @@
 @section('content')
 
 <main class="blog-post">
+    <section class="related-posts"></section>
     <div class="container">
         <h1 class="edica-page-title" data-aos="fade-up">{{ $post->title }}</h1>
-        <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200">Опубликован • {{ $date->translatedFormat('d F') }},{{ $date->year }} • {{ $date->format('h:i') }} • Лайков-{{ $post->likedUsers->count() }} • Комментариев-{{ $post->comments->count() }}</p>
-        <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
+        <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200">Опубликован • {{ $date->translatedFormat('d F') }},{{ $date->year }} • {{ $date->format('H:i') }} • Лайков-{{ $post->likedUsers->count() }} • Комментариев-{{ $post->comments->count() }}</p>
+        <section class="blog-post-featured-img " data-aos="fade-up" data-aos-delay="300">
             <img src="{{ asset('storage/'.$post->preview_image )}}" alt="featured image" class="w-100">
         </section>
         <section class="post-content">
             <div class="row">
                 <div class="col-lg-9 mx-auto" data-aos="fade-up">
-                    {!! $post->content !!}
-                    <p>{!! $post->content !!}</p>
                     <p>{!! $post->content !!}</p>
                 </div>
             </div>
@@ -68,7 +67,7 @@
         </section>
         <div class="row">
             <div class="col-lg-9 mx-auto">
-                @if($relposts->count() !=0 )
+                @if($relposts->count() > 0 )
                 <section class="related-posts">
                     <h2 class="section-title mb-4" data-aos="fade-up">Похожие посты</h2>
                     <div class="row">
@@ -107,7 +106,7 @@
                                 <div class="comment-text mb-2">
                                     <span class="username">
                                         <div>
-                                            Автор: {{ $comment->user->name }}
+                                            Автор: Z-{{ $comment->user->name }}
                                         </div>
                                     </span>
                                     {{-- <span class="text-muted float-right">{{ $comment->date_as_carbon->diffForHumans() }}</span><br> --}}
@@ -117,6 +116,7 @@
                             @endforeach
                         </div>
                     </section>
+                @else <h3>Пока комментов не было</h3>
                 @endif
                 @auth
                     <section class="comment-section">
@@ -126,7 +126,7 @@
                             <div class="row">
                                 <div class="form-group col-12" data-aos="fade-up">
                                 <label for="message" class="sr-only">Comment</label>
-                                <textarea name="message" id="message" class="form-control" placeholder="Комментарий" rows="3"></textarea>
+                                <textarea name="message" id="message" class="form-control" placeholder="Напишите комментарий" rows="3"></textarea>
                                 </div>
                             </div>
                             <div class="row">
